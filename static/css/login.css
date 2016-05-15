@@ -1,0 +1,50 @@
+.model {
+    padding: 14px;
+    height: 400px;
+    width: 350px;
+    border: 3px solid #eeeeee;
+    margin: 80px auto;
+}
+
+div img {
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-bottom: 60px;
+}
+
+.userpw {
+    height: 24px;
+    font-size: 14px;
+}
+
+.button_css_1 {
+    background: #00a8e6;
+    width: 60px;
+    height: 30px;
+    color: #ffffff;
+    font-size: 15px;
+    float: right;
+    margin-top: 20px;
+    border: 0px;
+    border-radius: 6px;
+    margin-right: 45px;
+}
+
+.button_css_2 {
+    background: #00a8e6;
+    width: 60px;
+    height: 30px;
+    color: #ffffff;
+    font-size: 15px;
+    margin-top: 20px;
+    border: 0px;
+    border-radius: 6px;
+}
+
+.register_mark {
+    text-decoration: none;
+    color: #444444;
+    margin-top: 22px;
+    margin-left: 5px;
+    display: inline-block;
+}

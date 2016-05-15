@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册 - openstack - </title>
+    <link rel="stylesheet" type="text/css" href="/static/css/uikit.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
+    <script type="text/javascript" src="/static/js/register.js"></script>
+</head>
+<body>
+<div class="header"></div>
+<img src="/static/images/openstack_image.png">
+<img src="/static/images/openstack_left.png" class="images_openstack">
+<form name="register" action="" method="post" id="registers">
+    {% csrf_token %}
+    <p class="head"> openstack 注册</p>
+    <label class="input_uk">用户名</label><input type="text" name="username" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="user"><img src="/static/images/fail.jpg"> 用户名是必须填的</span><br>
+    <label class="input_uk">手机号</label><input type="text" name="phone" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="telephone"><img src="/static/images/fail.jpg"> 手机号是必须填的</span><br>
+    <label class="input_uk">输入密码</label><input type="password" name="password" id="password" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="passwd"><img src="/static/images/fail.jpg"> 密码是必须填的</span><br>
+    <label class="input_uk">再次输入密码</label><input type="password" name="newpassword" id="newpassword" class="uk-text-small uk-form-width-medium input_uk" onblur="return password_identity()"><span class="identify" id="newpasswd"><img src="/static/images/fail.jpg"> 密码不一致</span><img src="/static/images/success.jpg" class="identify" id="success"><br>
+    <label class="input_uk">验证码</label><input type="text" name="identifycode" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="codes"><img src="/static/images/fail.jpg"> 验证码不正确</span><br>
+    <input type="button" value="提交" class="button_css_1" onclick="return register_form()">
+</form>
+</body>
+</html>

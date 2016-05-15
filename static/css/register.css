@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: #dddddd;
+}
+
+.head {
+    width: 310px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header {
+    height: 25px;
+    background: #0091ca;
+}
+
+form {
+    margin-top: 80px;
+    margin-left: 528px;
+}
+
+.identify {
+    display: none;
+}
+
+.input_uk {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    height: 20px;
+    line-height: 16px;
+}
+
+label {
+    width: 90px;
+    text-align: right;
+    padding-right: 8px;
+}
+
+#registers {
+    width: 452px;
+}
+
+.images_openstack {
+    position: fixed;
+    right: 0px;
+    top: 240px;
+}
+
+.button_css_1 {
+    background: #00a8e6;
+    width: 60px;
+    height: 30px;
+    color: #ffffff;
+    font-size: 15px;
+    float: right;
+    margin-top: 20px;
+    border: 0px;
+    border-radius: 6px;
+    margin-right: 140px;
+}

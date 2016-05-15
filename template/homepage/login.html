@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 - openstack - </title>
+    <link rel="stylesheet" type="text/css" href="/static/css/uikit.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+</head>
+<body>
+<div class="model">
+    <form action="" method="post">
+        {% csrf_token %}
+        <img src="/static/images/login.jpg">
+        <h2>登录</h2>
+        <span>用户名</span><br>
+        <input type="text" placeholder="请输入用户名" class="uk-thumbnail-medium userpw"><br>
+        <span class="uk-dropdown-bottom" style="display: inline-block;">密码</span><br>
+        <input type="password" placeholder="密码" class="uk-thumbnail-medium userpw"><br>
+        <a href="register" class="register_mark">注册</a>
+        <input type="submit" value="登入" class="button_css_1">
+    </form>
+</div>
+</body>
+</html>
