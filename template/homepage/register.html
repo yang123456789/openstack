@@ -7,19 +7,46 @@
     <link rel="stylesheet" type="text/css" href="/static/css/register.css">
     <script type="text/javascript" src="/static/js/register.js"></script>
 </head>
-<body>
+<body onload="createCode()">
 <div class="header"></div>
 <img src="/static/images/openstack_image.png">
 <img src="/static/images/openstack_left.png" class="images_openstack">
-<form name="register" action="" method="post" id="registers">
+<form name="register" action="/?" method="post" id="registers" onsubmit="return register_form()">
     {% csrf_token %}
     <p class="head"> openstack 注册</p>
-    <label class="input_uk">用户名</label><input type="text" name="username" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="user"><img src="/static/images/fail.jpg"> 用户名是必须填的</span><br>
-    <label class="input_uk">手机号</label><input type="text" name="phone" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="telephone"><img src="/static/images/fail.jpg"> 手机号是必须填的</span><br>
-    <label class="input_uk">输入密码</label><input type="password" name="password" id="password" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="passwd"><img src="/static/images/fail.jpg"> 密码是必须填的</span><br>
-    <label class="input_uk">再次输入密码</label><input type="password" name="newpassword" id="newpassword" class="uk-text-small uk-form-width-medium input_uk" onblur="return password_identity()"><span class="identify" id="newpasswd"><img src="/static/images/fail.jpg"> 密码不一致</span><img src="/static/images/success.jpg" class="identify" id="success"><br>
-    <label class="input_uk">验证码</label><input type="text" name="identifycode" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="codes"><img src="/static/images/fail.jpg"> 验证码不正确</span><br>
-    <input type="button" value="提交" class="button_css_1" onclick="return register_form()">
+    <label class="input_uk">用户名</label><input type="text" name="username" onfocus="return disappear_1()" onblur="return appear_1() "class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="user"><img src="/static/images/fail.jpg"> 用户名是必须填的</span><br>
+    <label class="input_uk">手机号</label><input type="text" name="phone" onfocus="return disappear_2()" onblur="return appear_2()" id="phone" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="telephone"><img src="/static/images/fail.jpg"> 手机号是必须填的</span><br>
+    <label class="input_uk">输入密码</label><input type="password" name="password" onfocus="return disappear_3()" onblur="return appear_3()" id="password" class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="passwd"><img src="/static/images/fail.jpg"> 密码是必须填的</span><br>
+    <label class="input_uk">再次输入密码</label><input type="password" name="new_password" id="new_password" class="uk-text-small uk-form-width-medium input_uk" onblur="return password_identity()"><span class="identify" id="newpasswd"><img src="/static/images/fail.jpg"> 密码不一致</span><img src="/static/images/success.jpg" class="identify" id="success"><br>
+    <label class="input_uk">验证码</label><input type="text" name="identify_code" onfocus="return disappear_4()" onblur="return appear_4()" class="uk-text-small uk-form-width-medium input_uk"><div class="code" id="checkcode"></div><a href="#" onclick="createCode()">看不清换一张</a><span class="identify" id="codes"><img src="/static/images/fail.jpg"> 验证码不正确</span><br>
+    <input type="submit" value="提交" class="button_css_1">
 </form>
 </body>
 </html>
+<script>
+//identity code
+var code;
+function createCode() {
+    code = "";
+    var codelength = 6;
+    var checkCode = document.getElementById("checkcode");
+    var codeChars = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+    for(var i=0;i<codelength;i++) {
+        var charNum = Math.floor(Math.random() * 52);
+        code += codeChars[charNum];
+    }
+    if(checkCode) {
+        checkCode.innerHTML = code;
+    }
+}
+function registers_form() {
+    var identify_code = register.identify_code.value;
+    if (identify_code.toUpperCase() != code.toUpperCase) {
+        identity[4].style.display = 'inline-block';
+        return false;
+    }
+    return true;
+}
+</script>
