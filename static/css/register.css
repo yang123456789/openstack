@@ -21,8 +21,10 @@ html {
 }
 
 form {
-    margin-top: 80px;
-    margin-left: 528px;
+    margin: 80px auto;
+    position: relative;
+    width: 596px;
+    padding-left: 60px;
 }
 
 .identify {
@@ -43,10 +45,6 @@ label {
     padding-right: 8px;
 }
 
-#registers {
-    width: 452px;
-}
-
 .images_openstack {
     position: fixed;
     right: 0px;
@@ -64,4 +62,25 @@ label {
     border: 0px;
     border-radius: 6px;
     margin-right: 140px;
+}
+
+a {
+    margin-left: 86px;
+    margin-right: 4px;
+}
+
+.code {
+    position: absolute;
+    color: #005599;
+    text-align: center;
+    top: 192px;
+    height: 22px;
+    width: 80px;
+    font-size: 16px;
+    line-height: 22px;
+    background: #99baca;
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing:2px; /*字母间的距离*/
+    font-style: italic; /*字体倾斜*/
 }

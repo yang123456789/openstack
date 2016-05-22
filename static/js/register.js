@@ -24,7 +24,6 @@ function register_form(){
     var identify_code = register.identify_code.value;
     if(identify_code == "") {
         identity[4].style.display = 'inline-block';
-        //identity[4].style.width = '130px';
         return false;
     }
     if(phone != '' && !phone.match(/^\d{3}-\d{8}|\d{4}-\d{7}$|^1(3[0-9]|5[012356789]|8[0-9]|4[57]|7[68])\d{8}$/)) {
