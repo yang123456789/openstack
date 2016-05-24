@@ -8,7 +8,7 @@ import re
 
 def index(request):
     params = request.POST
-    result, message = registered(params)
+    result, message = _registered(params)
     if result:
         openstack = Register(
             customer_username = params['username'],
@@ -20,7 +20,7 @@ def index(request):
     openstack.save()
     return render(request, 'homepage/login.html')
 
-def registered(params):
+def _registered(params):
     if len(params.get('username')) < 1:
         return False, "username is invalid"
     if params['phone'].isdigit() is False:

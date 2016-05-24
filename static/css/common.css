@@ -12,12 +12,13 @@ ul li {
 
 ol li {
     /*border: 1px solid #00a8e6;*/
-    display: none;
+    /*display: none;*/
     list-style: none;
     float: right;
-    margin-top: -14px;
+    margin-top: -16px;
     width: 70px;
     text-align: center;
+    cursor: pointer;
 }
 
 .hides {
@@ -28,9 +29,12 @@ ol li {
 
 .header {
     height: 50px;
+    background: #eeeeee;
 }
 
 .header-right {
+    /*border: 1px solid #3399ff;*/
+    cursor: pointer;
     float: right;
     width: 70px;
     text-align: center;
