@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Register(models.Model):
+    auth_token = models.CharField(max_length=255, null=False)
     customer_username = models.CharField(max_length=255, null=False, db_index=True)
     customer_phone = models.CharField(max_length=255, null=False)
     customer_password = models.CharField(max_length=255, null=False)

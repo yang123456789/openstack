@@ -4,22 +4,22 @@ function register_form(){
     var username = register.username.value;
     if(username == "") {
         identity[0].style.display = 'inline-block';
-        identity[0].style.width = '130px';
+        //identity[0].style.width = '130px';
     }
     var phone = register.phone.value;
     if(phone == "") {
         identity[1].style.display = 'inline-block';
-        identity[1].style.width = '130px';
+        //identity[1].style.width = '130px';
     }
     var password = register.password.value;
     if(password == "") {
         identity[2].style.display = 'inline-block';
-        identity[2].style.width = '130px';
+        //identity[2].style.width = '130px';
     }
     var new_password = register.new_password.value;
     if(new_password == "") {
         identity[3].style.display = '';
-        identity[3].style.width = '130px';
+        //identity[3].style.width = '130px';
     }
     var identify_code = register.identify_code.value;
     if(identify_code == "") {
