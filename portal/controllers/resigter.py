@@ -9,9 +9,13 @@ from portal import sshkey
 def index(request):
     params = request.POST
     result, message = _registered(params)
-    ssh_public_key = sshkey.generation_two_keys(params['username'], params['identify_code'])
-    token = sshkey.validation(ssh_public_key)
     if result:
+        ssh_public_key = sshkey.generation_two_keys(
+        params['username'].encode('utf-8'),
+        params['password'].encode('utf-8')
+        )
+        token = sshkey.validation(ssh_public_key)
+
         openstack = Register(
             customer_username = params['username'],
             customer_phone = params['phone'],
