@@ -4,12 +4,35 @@
     width: 350px;
     border: 3px solid #eeeeee;
     margin: 80px auto;
+    position: relative;
+}
+
+.error {
+    color: #ff0000;
+    width: 150px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
 }
 
 div img {
     margin-top: 10px;
     margin-left: 100px;
     margin-bottom: 60px;
+}
+
+#user_img {
+    position: absolute;
+    left: 192px;
+    top: 276px;
+    display: none;
+}
+
+#password_img {
+    position: absolute;
+    left: 192px;
+    top: 328px;
+    display: none;
 }
 
 .userpw {
