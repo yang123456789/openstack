@@ -1,26 +1,27 @@
-#-*- coding:utf-8 -*-
-
 from db.views import *
 from db.models import Register
-import requests
+import re
 import json
 from portal import sshkey
 
 def index(request):
     params = request.POST
-    result, message = _registered(params)
-    ssh_public_key = sshkey.generation_two_keys(params['username'], params['identify_code'])
-    token = sshkey.validation(ssh_public_key)
-    if result:
-        openstack = Register(
-            customer_username = params['username'],
-            customer_phone = params['phone'],
-            customer_password = params['password'],
-            customer_again_password = params['new_password'],
-            identify_code = params['identify_code'],
-            auth_token = token,
-        )
-    openstack.save()
+    # print type(params['username'])
+    if params:
+        ssh_public_key = sshkey.generation_two_keys(params['username'], params['identify_code'])
+        # print type(ssh_public_key)
+        token = sshkey.validation(ssh_public_key)
+        result, message = _registered(params)
+        if result:
+            openstack = Register(
+                customer_username = params['username'],
+                customer_phone = params['phone'],
+                customer_password = params['password'],
+                customer_again_password = params['new_password'],
+                identify_code = params['identify_code'],
+                auth_token = token,
+            )
+            openstack.save()
     return render(request, 'homepage/login.html')
 
 def _registered(params):
