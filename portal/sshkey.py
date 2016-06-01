@@ -5,14 +5,16 @@ import uuid
 
 def validation(ssh_public_key):
     try:
-        key = base64.urlsafe_b64encode(ssh_public_key.strip().encode('ascii'))
-        plain = hashlib.md5(key).hexdigest()
+        key = base64.urlsafe_b64encode(ssh_public_key.strip())
+        plain = hashlib.md5(key).hexdigest().upper()
         return plain
     except Exception:
         return False
 
 def generation_two_keys(app_key, secret_key):
     msg = str(uuid.NAMESPACE_DNS)
+    app_key = app_key.encode('utf-8')
+    secret_key = secret_key.encode('utf-8')
     app_key = hmac.new(app_key, msg).digest()
     secret_key = hmac.new(secret_key).digest()[0:10].upper()
     secret_key = secret_key + hmac.new(secret_key).digest()[10:]

@@ -11,7 +11,7 @@
 <div class="header"></div>
 <img src="/static/images/openstack_image.png">
 <img src="/static/images/openstack_left.png" class="images_openstack">
-<form name="register" action="/?" method="post" id="registers" onsubmit="return register_form()">
+<form name="register" action="/?" method="POST" id="registers" onsubmit="return register_form()">
     {% csrf_token %}
     <p class="head"> openstack 注册</p>
     <label class="input_uk">用户名</label><input type="text" name="username" onfocus="return disappear_1()" onblur="return appear_1() "class="uk-text-small uk-form-width-medium input_uk"><span class="identify" id="user"><img src="/static/images/fail.jpg"> 用户名是必须填的</span><br>

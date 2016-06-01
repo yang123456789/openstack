@@ -13,19 +13,24 @@
             return false;
         }
         return true;
-
+    };
+    transmission_data = function() {
+        var username = $('.user').val();
+        var password = $('.password').val();
+        //alert(username)
         var params = {
             'customer_username': username,
             'customer_password': password
-        }
+        };
         $ajax({
-            type: "post",
-            url: "",
+            type: "POST",
+            url: "/login",
             data: params,
-            success: function() {
-
+            success: function(msg) {
+                alert()
+                $('form').html(msg)
             }
-        })
+        });
     };
     disappear = function() {
         var span_error = $('.error');
