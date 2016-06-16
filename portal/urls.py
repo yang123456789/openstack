@@ -5,4 +5,6 @@ urlpatterns = patterns('portal.controllers',
     url(r'^login$', 'login.validate'),
     url(r'^register$', 'resigter.resigter'),
     url(r'^common$', 'common.index'),
+    url(r'^system_info$', 'compute.computer.index'),
+    # url(r'^ajax$', 'login.ajax_handler')
 )
