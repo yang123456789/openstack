@@ -20,7 +20,7 @@ def index(request):
                 auth_token = token,
             )
             openstack.save()
-    return render(request, 'homepage/login.html')
+    return render(request, 'sysadmin/login.html')
 
 def _registered(params):
     if len(params.get('username')) < 1:
@@ -36,4 +36,4 @@ def _registered(params):
     return True, "success"
 
 def resigter(request):
-    return render(request, 'homepage/register.html')
+    return render(request, 'sysadmin/register.html')
