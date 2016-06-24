@@ -15,22 +15,25 @@
         return true;
     };
     transmission_data = function() {
-        var username = $('.user').val();
-        var password = $('.password').val();
-        var params = {
-            'customer_username': username,
-            'customer_password': password
-        };
+        //var username = $('.user').val();
+        //var password = $('.password').val();
+        //var params = {
+        //    'username': username,
+        //    'password': password
+        //};
         $ajax({
-            type: "POST",
+            type: "post",
             url: "/login",
-            data: params,
+            data: {'username': customer_username, 'password': customer_password},
             success: function(msg) {
-                $('form').html(msg)
+                console.log('qwe')
+                $('form').form(msg)
             },
-            error: function(msg) {
+            error: function(data) {
+                console.log('qwe')
                 var span_error = $('.error');
                 span_error[0].innerHTML = '用户名或密码错误!';
+                return false;
             }
         });
     };
