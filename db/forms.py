@@ -1,34 +1,18 @@
 # coding:utf-8
 from django import forms
-from django.contrib.auth.models import User
-from bootstrap_toolkit.widgets import BootstrapDateInput,BootstrapTextInput,BootstrapUneditableInput
+from db.models import *
 
 
-class LoginForm(forms.Form):
-    # required指明必填项
-    username = forms.CharField(
-        required=True,
-        label="用户名",
-        error_messages={'required': '请输入用户名'},
-        widget=forms.TextInput(
-            attrs={
-                'placeholder': "用户名",
-                }
-            )
-        )
-    password = forms.CharField(
-            required=True,
-            label="密码",
-            error_messages={'required': '请输入密码'},
-            widget=forms.PasswordInput(
-                attrs={
-                    'placeholder': "密码",
-                    }
-                ),
-            )
+class Register(forms.Form):
+    username = forms.CharField(max_length=255, required=False, db_index=True, label='用户名')
+    phone = forms.CharField(max_length=255, required=False, label='手机号')
+    password = forms.CharField(max_length=255, required=False, label='密码')
+    again_password = forms.CharField(max_length=255, required=False, label='确认密码')
+    identify_code = forms.CharField(max_length=255, required=False, label='验证码')
 
-    def clean(self):
-        if not self.is_valid():
-            raise forms.ValidationError("用户名和密码为必填项")
-        else:
-            cleaned_data = super(LoginForm,self).clean()
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        # password = self.cleaned_data['password']
+        # again_password = self.cleaned_data['again_password']
+
+        customer_username = Register.objects.filter(username=username)
