@@ -6,11 +6,16 @@ import re
 
 
 class Register(forms.Form):
-    username = forms.CharField(max_length=255, required=True, label='用户名')
-    phone = forms.CharField(max_length=255, required=True, label='手机号')
-    password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput, label='密码')
-    again_password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput, label='确认密码')
-    identify_code = forms.CharField(max_length=255, required=True, label='验证码')
+    username = forms.CharField(max_length=255, required=True, label='用户名',
+                               error_messages={'required': '请输入用户名'})
+    phone = forms.CharField(max_length=255, required=True, label='手机号',
+                            error_messages={'required': '请输入手机号'})
+    password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput,
+                               label='密码', error_messages={'required': '请输入密码'})
+    again_password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput,
+                                     label='确认密码', error_messages={'required': '请再次输入密码'})
+    identify_code = forms.CharField(max_length=255, required=True, label='验证码',
+                                    error_messages={'required': '请输入验证码'})
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
