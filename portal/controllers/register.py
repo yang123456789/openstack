@@ -1,28 +1,9 @@
 from db.views import *
-from db.forms import Registers
+from db.forms import RegisterForm
 from db.models import Register
 import re
 import json
 from portal import sshkey
-
-
-def index(request):
-    # params = request.POST
-    # if params:
-    #     ssh_public_key = sshkey.generation_two_keys(params['username'], params['password'])
-    #     token = sshkey.validation(ssh_public_key)
-    #     result, message = _registered(params)
-    #     if result:
-    #         openstack = Register(
-    #             username = params['username'],
-    #             phone = params['phone'],
-    #             password = params['password'],
-    #             again_password = params['again_password'],
-    #             identify_code = params['identify_code'],
-    #             auth_token = token
-    #         )
-    #         openstack.save()
-    return render(request, 'sysadmin/login.html')
 
 
 def _registered(params):
@@ -44,10 +25,9 @@ def resigter(request):
         params = request.POST
         ssh_public_key = sshkey.generation_two_keys(params['username'], params['password'])
         token = sshkey.validation(ssh_public_key)
-        form = Registers(params)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            print username
             phone =form.cleaned_data['phone']
             password = form.cleaned_data['password']
             again_password = form.cleaned_data['again_password']
@@ -63,5 +43,5 @@ def resigter(request):
             res.save()
             return HttpResponseRedirect('/common')
     else:
-        form = Registers()
+        form = RegisterForm()
     return render(request, 'sysadmin/register.html', {'form': form})
