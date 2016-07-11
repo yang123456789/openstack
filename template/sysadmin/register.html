@@ -13,15 +13,20 @@
     {% block extra_head %}{% endblock %}
     <style>
         body{background: #f8f8f8;}
-{#        form{margin-top: 3%; margin-left: 25%;}#}
+        form{margin-top: 3%; margin-left: 25%;}
+        form #id_username{height: 30px; display: block}
+        form #id_phone{height: 30px; display: block}
+        form #id_password{height: 30px; display: block}
+        form #id_again_password{height: 30px; display: block}
+        form #id_identify_code{height: 30px; display: block}
     </style>
 </head>
 <body>
 <img src="/static/images/openstack_image.png">
-<form action="" method="post" class="form-horizontal">
+<form action="" method="post" class="form-horizontal" role="form">
     {% csrf_token %}
-    {{ form|as_bootstrap:"container" }}
-    <input type="submit" value="提交" class="btn btn-primary">
+    {{ form|as_bootstrap }}
+    <input type="submit" value="提交" class="btn btn-primary ">
 </form>
 </body>
 </html>
