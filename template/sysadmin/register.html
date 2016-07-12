@@ -13,7 +13,7 @@
     {% block extra_head %}{% endblock %}
     <style>
         body{background: #f8f8f8;}
-        form{margin-top: 3%; margin-left: 25%;}
+        form{border:1px solid #ff0000; width: 412px;}
         form #id_username{height: 30px; display: block}
         form #id_phone{height: 30px; display: block}
         form #id_password{height: 30px; display: block}
@@ -23,10 +23,10 @@
 </head>
 <body>
 <img src="/static/images/openstack_image.png">
-<form action="" method="post" class="form-horizontal" role="form">
+<form action="" method="post" class="form-horizontal input-lg" role="form">
     {% csrf_token %}
     {{ form|as_bootstrap }}
-    <input type="submit" value="提交" class="btn btn-primary ">
+    <input type="submit" value="提交" class="btn btn-primary pull-right">
 </form>
 </body>
 </html>
