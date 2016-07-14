@@ -1,3 +1,6 @@
+from django.utils.translation import ugettext as _
+
+
 class OpenstackException(Exception):
     msg_fmt = ('OpenstackException')
 

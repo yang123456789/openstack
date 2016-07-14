@@ -2,40 +2,48 @@
 from django import forms
 from db.models import *
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext as _
 import re
 
 
-class Register(forms.Form):
-    username = forms.CharField(max_length=255, required=True, label='用户名',
-                               error_messages={'required': '请输入用户名'})
-    phone = forms.CharField(max_length=255, required=True, label='手机号',
-                            error_messages={'required': '请输入手机号'})
-    password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput,
-                               label='密码', error_messages={'required': '请输入密码'})
-    again_password = forms.CharField(max_length=255, required=True, widget=forms.PasswordInput,
-                                     label='确认密码', error_messages={'required': '请再次输入密码'})
-    identify_code = forms.CharField(max_length=255, required=True, label='验证码',
-                                    error_messages={'required': '请输入验证码'})
+class RegisterForm(forms.Form):
+    username = forms.CharField(
+        max_length=255, required=True, label=_('username'),
+        error_messages={'required': _('please input username')})
+    phone = forms.CharField(
+        max_length=255, required=True, label=_('phone'),
+        error_messages={'required': _('please input phone')})
+    password = forms.CharField(
+        max_length=255, required=True, widget=forms.PasswordInput,
+        label=_('password'),
+        error_messages={'required': _('please input password')})
+    again_password = forms.CharField(
+        max_length=255, required=True, widget=forms.PasswordInput,
+        label=_('Confirm password'),
+        error_messages={'required': _('please again input password')})
+    identify_code = forms.CharField(
+        max_length=255, required=True, label=_('identity code'),
+        error_messages={'required': _('please input identity code')})
 
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        if username:
-            customer_username = Register.objects.filter(username__exact=username)
-            if username == customer_username:
-                raise ValidationError('username has been used')
-
-    def clean_phone(self):
-        phone = self.cleaned_data.get('phone')
-        if phone:
-            if re.match(r'^\d{3}-\d{8}|\d{4}-\d{7}$|^1(3[0-9]|5[012356789]|8[0-9]|4[57]|7[68])\d{8}$', phone) == None:
-                raise ValidationError('phone format invalid')
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        again_password = self.cleaned_data.get('again_password')
-        if password and again_password:
-            if password != again_password:
-                raise ValidationError('passwords are not consistent')
+    # def clean_username(self):
+    #     username = self.cleaned_data.get('username')
+    #     if username:
+    #         customer_username = Register.objects.filter(username__exact=username)
+    #         if username == customer_username:
+    #             raise ValidationError('username has been used')
+    #
+    # def clean_phone(self):
+    #     phone = self.cleaned_data.get('phone')
+    #     if phone:
+    #         if re.match(r'^\d{3}-\d{8}|\d{4}-\d{7}$|^1(3[0-9]|5[012356789]|8[0-9]|4[57]|7[68])\d{8}$', phone) == None:
+    #             raise ValidationError('phone format invalid')
+    #
+    # def clean_password(self):
+    #     password = self.cleaned_data.get('password')
+    #     again_password = self.cleaned_data.get('again_password')
+    #     if password and again_password:
+    #         if password != again_password:
+    #             raise ValidationError('passwords are not consistent')
 
 # class LoginForm(forms.Form):
 #     username = forms.CharField(

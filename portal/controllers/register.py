@@ -1,6 +1,8 @@
 from db.views import *
 from db.forms import RegisterForm
 from db.models import Register
+from django.utils.translation import ugettext as _
+from django.core.exceptions import ValidationError
 import re
 import json
 from portal import sshkey
@@ -20,7 +22,7 @@ def _registered(params):
     return True, "success"
 
 
-def resigter(request):
+def register(request):
     if request.method == 'POST':
         params = request.POST
         ssh_public_key = sshkey.generation_two_keys(params['username'], params['password'])
@@ -45,3 +47,9 @@ def resigter(request):
     else:
         form = RegisterForm()
     return render(request, 'sysadmin/register.html', {'form': form})
+
+
+def clean_username(username):
+    customer_username = Register.objects.filter(username__exact=username)
+    if username == customer_username:
+        raise ValidationError(_('username has been used'))

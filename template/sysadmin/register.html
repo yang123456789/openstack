@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html>
 {% load bootstrap_toolkit %}
 {% load url from future %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>注册 - openstack - </title>
+    <title>{% trans 'register' %} - openstack - </title>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/register.css">
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
@@ -13,7 +14,6 @@
     {% block extra_head %}{% endblock %}
     <style>
         body{background: #f8f8f8;}
-        form{border:1px solid #ff0000; width: 412px;}
         form #id_username{height: 30px; display: block}
         form #id_phone{height: 30px; display: block}
         form #id_password{height: 30px; display: block}
@@ -23,10 +23,12 @@
 </head>
 <body>
 <img src="/static/images/openstack_image.png">
-<form action="" method="post" class="form-horizontal input-lg" role="form">
-    {% csrf_token %}
-    {{ form|as_bootstrap }}
-    <input type="submit" value="提交" class="btn btn-primary pull-right">
-</form>
+<div class="col-lg-4 col-xs-offset-3">
+    <form action="" method="post" class="form-horizontal input-lg" role="form">
+        {% csrf_token %}
+        {{ form|as_bootstrap:"" }}
+        <input type="submit" value="{% trans 'register' %}" class="btn btn-primary pull-right">
+    </form>
+</div>
 </body>
 </html>

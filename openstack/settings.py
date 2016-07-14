@@ -39,11 +39,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap_toolkit',
-    'db'
+    'db',
+    'portal',
+    'sysadmin'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,8 +74,21 @@ TEMPLATES = [
     },
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.csrf",
+    "django.core.context_processors.request",
+    "django.contrib.messages.context_processors.messages",
+)
+
 WSGI_APPLICATION = 'openstack.wsgi.application'
 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'portal/locale'),
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
@@ -112,6 +128,6 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(
-    os.path.dirname(__file__),'static'
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, "static")
 )
