@@ -15,8 +15,20 @@ class OpenstackException(Exception):
 
 
 class VitityLenException(OpenstackException):
-    msg_fmt = ('Register list can not more than One')
+    msg_fmt = _('Register list can not more than One')
 
 
 class AuthTokenVitity(OpenstackException):
-    msg_fmt = ('AuthToken vititied invalid')
+    msg_fmt = _('AuthToken vititied invalid')
+
+
+class UsernameException(OpenstackException):
+    msg_fmt = _('username has been used')
+
+
+class PhoneException(OpenstackException):
+    msg_fmt = _('phone format invalid')
+
+
+class PasswordIdentityException(OpenstackException):
+    msg_fmt = _('passwords are not consistent')
