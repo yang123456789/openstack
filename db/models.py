@@ -14,10 +14,10 @@ class Register(models.Model):
         return u'%s %s %s %s %s %s %s' % (
             self.auth_token,
             self.register_time,
-            self.customer_username,
-            self.customer_phone,
-            self.customer_password,
-            self.customer_again_password,
+            self.username,
+            self.phone,
+            self.password,
+            self.again_password,
             self.identify_code
         )
 
