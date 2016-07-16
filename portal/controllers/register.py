@@ -1,25 +1,7 @@
 from db.views import *
 from db.forms import RegisterForm
 from db.models import Register
-from django.utils.translation import ugettext as _
-from django.core.exceptions import ValidationError
-import re
-import json
 from portal import sshkey
-
-
-def _registered(params):
-    if len(params.get('username')) < 1:
-        return False, "username is invalid"
-    if params['phone'].isdigit() is False:
-        return False, "phone is invalid"
-    if len(params.get('password')) < 1:
-        return False, "password is invalid"
-    if len(params.get('new_password')) < 1:
-        return False, "newpassword is invalid"
-    if len(params.get('identify_code')) < 1:
-        return False, "identitycode is invalid"
-    return True, "success"
 
 
 def register(request):
@@ -47,9 +29,3 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'sysadmin/register.html', {'form': form})
-
-
-def clean_username(username):
-    customer_username = Register.objects.filter(username__exact=username)
-    if username == customer_username:
-        raise ValidationError(_('username has been used'))
