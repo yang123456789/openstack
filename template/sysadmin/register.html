@@ -1,32 +1,30 @@
 {% load i18n %}
 <!DOCTYPE html>
 {% load bootstrap_toolkit %}
-{% load url from future %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% trans 'register' %} - openstack - </title>
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/register.css">
-    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     {% bootstrap_stylesheet_tag %}
-    {% bootstrap_stylesheet_tag "responsive" %}
-    {% block extra_head %}{% endblock %}
     <style>
-        body{background: #f8f8f8;}
+        .alert{margin-bottom: 5px;}
+        label{font-size: 16px;}
+        form{margin-top: 15px;}
         form #id_username{height: 30px; display: block}
         form #id_phone{height: 30px; display: block}
         form #id_password{height: 30px; display: block}
         form #id_again_password{height: 30px; display: block}
-        form #id_identify_code{height: 30px; display: block}
+        form #id_identify_code{height: 30px; width: 90px; display: block}
+        form p{font-size: 16px; text-align: center;}
     </style>
 </head>
 <body>
 <img src="/static/images/openstack_image.png">
 <div class="col-lg-4 col-xs-offset-3">
-    <form action="" method="post" class="form-horizontal input-lg" role="form">
+    <form action="" method="post" class="form-horizontal">
         {% csrf_token %}
-        {{ form|as_bootstrap:"" }}
+        {{ form|as_bootstrap }}
         <input type="submit" value="{% trans 'register' %}" class="btn btn-primary pull-right">
     </form>
 </div>
