@@ -1,74 +1,33 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> openstack </title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="/static/css/uikit.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/common.css">
-    <script type="application/javascript" src="/static/js/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/uikit.min.css">
+    <script type="text/javascript" src="/static/js/uikit.min.js"></script>
+    <script type="text/javascript" src="/static/js/uikit.js"></script>
 </head>
 <body>
-<div class="header">
-    <img src="/static/images/openstack_head_left.jpg" height="50">
-    <h4 class="header-right"> admin<img src="/static/images/people.jpg"></h4>
-    <ol>
-        <li>登出</li>
-    </ol>
-</div>
-<div class="common_left">
-    <p>
-        <span>项目</span>
-        <p class="hides">
-            <span>Compute</span>
+<div>
+    <ul>
+        <li>
+            <a href="">{% trans 'projects' %}</a>
             <ul>
-                <li>概况</li>
-                <li>实例</li>
-                <li>云硬盘</li>
-                <li>镜像</li>
-                <li>访问 & 安全</li>
+                <li>
+                    <a href="">{% trans 'Compute' %}</a>
+                    <ul>
+                        <li>{% trans 'survey' %}</li>
+                        <li>{% trans 'instance' %}</li>
+                        <li>{% trans 'cloud valume' %}</li>
+                        <li>{% trans 'image' %}</li>
+                        <li>{% trans 'access and security' %}</li>
+                    </ul>
+                </li>
             </ul>
-        </p>
-        <p class="hides">
-            <span>网络</span>
-            <ul>
-                <li>概况</li>
-                <li>模式</li>
-                <li>访问 & 安全</li>
-            </ul>
-        </p>
-    </p>
-    <p>
-        <span>管理员</span>
-        <p class="hides">
-            <span>系统面板</span>
-            <ul>
-                <li>概况</li>
-                <li>虚拟机管理器</li>
-                <li>主机集合</li>
-                <li>实例</li>
-                <li>云硬盘</li>
-                <li>云主机类型</li>
-                <li>镜像</li>
-                <li>网络</li>
-                <li>默认值</li>
-                <li>路由</li>
-                <li>元数据定义</li>
-                <li>系统信息</li>
-            </ul>
-            <span>系统面板</span>
-            <ul>
-                <li>项目</li>
-                <li>用户</li>
-            </ul>
-        </p>
-    </p>
-    <p>
-        <span>Identity</span>
-        <ul>
-            <li>项目</li>
-            <li>用户</li>
-        </ul>
-    </p>
+        </li>
+    </ul>
 </div>
 </body>
 </html>
