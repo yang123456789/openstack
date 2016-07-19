@@ -46,3 +46,27 @@ msgstr "请输入验证码"
 
 msgid "register"
 msgstr "注册"
+
+msgid "projects"
+msgstr "项目"
+
+msgid "Compute"
+msgstr "Compute"
+
+msgid "survey"
+msgstr "概况"
+
+msgid "instance"
+msgstr "实例"
+
+msgid "cloud valume"
+msgstr "云硬盘"
+
+msgid "image"
+msgstr "镜像"
+
+msgid "access and security"
+msgstr "访问 & 安全"
+
+msgid "network"
+msgstr "网络"
