@@ -16,8 +16,10 @@
         form #id_phone{height: 30px; display: block;}
         form #id_password{height: 30px; display: block;}
         form #id_again_password{height: 30px; display: block;}
-        form #id_identify_code{height: 30px; width: 90px; display: block;}
+        form #id_identify_code{height: 30px; width: 75px; display: block;}
         form p{font-size: 16px; text-align: center;}
+        #check_code{position: absolute;left: 65%;top: 71%;}
+        #btn-position{margin-right: 25%}
     </style>
 </head>
 <body>
@@ -25,7 +27,14 @@
 <form action="" method="post" class="form-horizontal col-xs-4 col-xs-offset-3">
     {% csrf_token %}
     {{ form|as_bootstrap }}
-    <input type="submit" value="{% trans 'register' %}" class="btn btn-primary pull-right">
+    <img src="/validate_code" id="check_code" onclick="change_code()" title="{% trans 'Click Update' %}">
+    <input type="submit" value="{% trans 'register' %}" class="btn btn-primary pull-right" id="btn-position">
 </form>
 </body>
 </html>
+<script type="text/javascript">
+    function change_code() {
+        var code = document.getElementById('check_code');
+        code.src += '?';
+    }
+</script>
