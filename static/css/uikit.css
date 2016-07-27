@@ -1688,7 +1688,7 @@ iframe {
   padding: 5px 15px;
 }
 /*
- * Nested portal
+ * Nested items
  */
 .uk-nav ul {
   padding-left: 15px;
@@ -1778,7 +1778,7 @@ ul.uk-nav-sub {
   border-top: 1px solid #dddddd;
 }
 /*
- * Nested portal
+ * Nested items
  */
 .uk-nav-side ul a {
   color: #0077dd;
@@ -1819,7 +1819,7 @@ ul.uk-nav-sub {
   border-top: 1px solid #dddddd;
 }
 /*
- * Nested portal
+ * Nested items
  */
 .uk-nav-dropdown ul a {
   color: #0077dd;
@@ -1860,7 +1860,7 @@ ul.uk-nav-sub {
   border-top: 1px solid #dddddd;
 }
 /*
- * Nested portal
+ * Nested items
  */
 .uk-nav-navbar ul a {
   color: #0077dd;
@@ -1912,7 +1912,7 @@ html .uk-nav.uk-nav-offcanvas > li.uk-active > a {
   border-top: 1px solid #1a1a1a;
 }
 /*
- * Nested portal
+ * Nested items
  * No hover on touch devices because it behaves buggy in fixed offcanvas
  */
 .uk-nav-offcanvas ul a {
@@ -2014,7 +2014,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 /* Sub-objects: `uk-navbar-content`, `uk-navbar-brand`, `uk-navbar-toggle`
  ========================================================================== */
 /*
- * Imitate navbar portal
+ * Imitate navbar items
  */
 .uk-navbar-content,
 .uk-navbar-brand,
@@ -3070,8 +3070,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 .uk-form input[type="url"],
 .uk-form input[type="search"],
 .uk-form input[type="tel"],
-.
- input[type="color"] {
+.uk-form input[type="color"] {
   /* 1 */
   height: 30px;
   /* 2 */
