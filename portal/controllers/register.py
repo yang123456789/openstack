@@ -9,7 +9,6 @@ import StringIO
 def register(request):
     if request.method == 'POST':
         params = request.POST
-        print params
         ssh_public_key = sshkey.generation_two_keys(params['username'], params['password'])
         token = sshkey.validation(ssh_public_key)
         form = RegisterForm(request.POST)

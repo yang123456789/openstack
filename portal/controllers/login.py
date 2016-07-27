@@ -1,4 +1,4 @@
-from db.forms import LoginForm
+from db.forms import *
 from db.models import Register
 from db.views import *
 from django.utils.translation import ugettext as _
