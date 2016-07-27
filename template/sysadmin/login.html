@@ -1,29 +1,204 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <title>登录 - openstack - </title>
-{#    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">#}
-    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
-    <script type="text/javascript" src="/static/js/jquery-2.2.4.min.js"></script>
-{#    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>#}
-{#    <script type="text/javascript" src="/static/js/bootstrap.js"></script>#}
-    <script type="text/javascript" src="/static/js/login.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>{% trans 'login' %} - openstack - </title>
+    <meta name="description" content="User login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/assets/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/static/fonts/fonts.googleapis.com.css" />
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/static/assets/css/ace.min.css" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/static/assets/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/static/assets/css/ace-rtl.min.css" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/static/assets/css/ace-ie.min.css" />
+    <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="/static/assets/js/html5shiv.min.js"></script>
+    <script src="/static/assets/js/respond.min.js"></script>
+    <![endif]-->
 </head>
-<body>
-<div class="modal">
-    <form action="login" method="post" onsubmit="return openstack_login()">
-        {% csrf_token %}
-        <img src="/static/images/login.jpg">
-        <h2>登录</h2>
-        <span class="error"></span><br>
-        <span>用户名</span><br>
-        <input type="text" name="username" placeholder="请输入用户名" class="uk-thumbnail-medium userpw user" onfocus="return disappear()"><img src="/static/images/shutdown.jpg" id="user_img"><br>
-        <span class="uk-dropdown-bottom">密码</span><br>
-        <input type="password" name="password" placeholder="密码" class="uk-thumbnail-medium userpw password" onfocus="return disappear()"><img src="/static/images/shutdown.jpg" id="password_img"><br>
-        <a href="register" class="register_mark">注册</a>
-        <input type="submit" value="登入" class="button_css_1" onclick="return transmission_data()">
-    </form>
-</div>
+<body class="login-layout">
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div style="margin-top: 20%"></div>
+
+                        <div class="position-relative">
+                            <div id="login-box" class="login-box visible widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header blue lighter bigger">
+                                            <i class="ace-icon fa fa-coffee green"></i>
+                                            {% trans 'please input your information' %}
+                                        </h4>
+
+                                        <div class="space-6"></div>
+
+                                        <form>
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="text" class="form-control" placeholder="用户名" />
+                                                        <i class="ace-icon fa fa-user"></i>
+                                                    </span>
+                                                </label>
+
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="password" class="form-control" placeholder="密码" />
+                                                        <i class="ace-icon fa fa-lock"></i>
+                                                    </span>
+                                                </label>
+
+                                                <div class="space"></div>
+
+                                                <div class="clearfix">
+                                                    <label class="inline">
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl">{% trans 'remember' %}</span>
+                                                    </label>
+
+                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                        <i class="ace-icon fa fa-key"></i>
+                                                        <span class="bigger-110">{% trans 'login' %}</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="space-4"></div>
+                                            </fieldset>
+                                        </form>
+
+                                        <div class="space-6"></div>
+
+                                    </div><!-- /.widget-main -->
+
+                                    <div class="toolbar clearfix">
+                                        <div>
+                                            <a href="?" data-target="#forgot-box" class="forgot-password-link">
+                                                <i class="ace-icon fa fa-arrow-left"></i>
+                                                {% trans 'forget password' %}
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <a href="/register" class="user-signup-link">
+                                                {% trans 'register' %}
+                                                <i class="ace-icon fa fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.login-box -->
+
+                            <div id="forgot-box" class="forgot-box widget-box no-border">
+                                <div class="widget-body">
+                                    <div class="widget-main">
+                                        <h4 class="header red lighter bigger">
+                                            <i class="ace-icon fa fa-key"></i>
+                                            {% trans 'retrieve password' %}
+                                        </h4>
+
+                                        <div class="space-6"></div>
+                                        <p>
+                                            {% trans 'enter your email and receive instruction' %}
+                                        </p>
+
+                                        <form>
+                                            <fieldset>
+                                                <label class="block clearfix">
+                                                    <span class="block input-icon input-icon-right">
+                                                        <input type="email" class="form-control" placeholder="Email" />
+                                                        <i class="ace-icon fa fa-envelope"></i>
+                                                    </span>
+                                                </label>
+
+                                                <div class="clearfix">
+                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+                                                        <i class="ace-icon fa fa-lightbulb-o"></i>
+                                                        <span class="bigger-110">{% trans 'send email' %}</span>
+                                                    </button>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div><!-- /.widget-main -->
+
+                                    <div class="toolbar center">
+                                        <a href="#" data-target="#login-box" class="back-to-login-link">
+                                            {% trans 'return login' %}
+                                            <i class="ace-icon fa fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div><!-- /.widget-body -->
+                            </div><!-- /.forgot-box -->
+
+                        </div><!-- /.position-relative -->
+
+                        <div class="navbar-fixed-top align-right">
+                            <br />
+                            &nbsp;
+                            <a id="btn-login-dark" href="">{% trans 'Dark' %}</a>
+                            &nbsp;
+                            <span class="blue">/</span>
+                            &nbsp;
+                            <a id="btn-login-blur" href="">{% trans 'Blur' %}</a>
+                            &nbsp;
+                            <span class="blue">/</span>
+                            &nbsp;
+                            <a id="btn-login-light" href="">{% trans 'Light' %}</a>
+                            &nbsp; &nbsp; &nbsp;
+                        </div>
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.main-content -->
+    </div><!-- /.main-container -->
+
+    <!-- basic scripts -->
+
+    <!--[if !IE]> -->
+    <script src="/static/js/jquery-2.2.4.min.js"></script>
+
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script src="/static/assets/js/jquery.1.11.1.min.js"></script>
+    <![endif]-->
+
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/static/js/jquery.min.js'>"+"<"+"/script>");
+    </script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+<script type="text/javascript">
+window.jQuery || document.write("<script src='/static/assets/js/jquery1x.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='/static/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript" src="/static/js/login/forget_password.js"></script>
 </body>
 </html>

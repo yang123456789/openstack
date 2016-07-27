@@ -24,7 +24,7 @@
 </head>
 <body>
 <img src="/static/images/openstack_image.png">
-<form action="" method="post" class="form-horizontal col-xs-4 col-xs-offset-3">
+<form action="" method="post" name="register" class="form-horizontal col-xs-4 col-xs-offset-3" onsubmit="register()">
     {% csrf_token %}
     {{ form|as_bootstrap }}
     <img src="/validate_code" id="check_code" onclick="change_code()" title="{% trans 'Click Update' %}">
@@ -32,9 +32,4 @@
 </form>
 </body>
 </html>
-<script type="text/javascript">
-    function change_code() {
-        var code = document.getElementById('check_code');
-        code.src += '?';
-    }
-</script>
+<script type="text/javascript" src="/static/js/register.js"></script>
