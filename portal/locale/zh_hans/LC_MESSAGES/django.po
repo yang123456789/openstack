@@ -70,3 +70,30 @@ msgstr "访问 & 安全"
 
 msgid "network"
 msgstr "网络"
+
+msgid "please input your information"
+msgstr "请输入您的信息"
+
+msgid "remember"
+msgstr "记住"
+
+msgid "forget password"
+msgstr "忘记密码"
+
+msgid "retrieve password"
+msgstr "找回密码"
+
+msgid "enter your email and receive instruction"
+msgstr "输入您的电子邮件和接收指令"
+
+msgid "send email"
+msgstr "发送邮件"
+
+msgid "return login"
+msgstr "返回登录"
+
+msgid "Click Update"
+msgstr "点击更新"
+
+msgid "Sorry, your browser does not support canvas, please download the latest version of the browser!"
+msgstr "对不起，您的浏览器不支持canvas，请下载最新版浏览器!"

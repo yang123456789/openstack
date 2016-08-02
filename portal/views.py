@@ -1,6 +1,10 @@
 import random
 from openstack.config import *
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from django.http import *
+from django.shortcuts import *
+import json
+from django.contrib import messages
 
 _upper_cases = LETTER_CASES.upper()
 _numbers = ''.join(map(str, range(1, 10)))
@@ -91,4 +95,15 @@ def create_identify_code(
     # filter, boundary strengthening (greater threshold)
     img = img.filter(ImageFilter.EDGE_ENHANCE_MORE)
     return img, strs
+
+
+def utf8(param):
+    if param is None or isinstance(param, str):
+        return param
+    return param.encode('utf-8')
+
+
+def render_json(data):
+    return HttpResponse(json.dumps(data), content_type="text/json")
+
 # Create your views here.
