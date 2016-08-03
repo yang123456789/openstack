@@ -1,6 +1,7 @@
 from db.models import Register
 from django.utils.translation import ugettext as _
 from portal.views import *
+import StringIO
 
 
 def index(request):
@@ -28,3 +29,19 @@ def _login_check(username):
     username = Register.objects.filter(username__iexact=username)
     if len(username) == 1:
         return username
+
+
+def generate_captcha(request):
+    mstream = StringIO.StringIO()
+    validate_codes = create_identify_code()
+    img = validate_codes[0]
+    img.save(mstream, "GIF")
+
+    # Save the verification code to session
+    request.session['validate_code'] = validate_codes[1]
+    return HttpResponse(mstream.getvalue())
+
+
+def validate_code(request):
+
+    return render_json()

@@ -106,4 +106,11 @@ def utf8(param):
 def render_json(data):
     return HttpResponse(json.dumps(data), content_type="text/json")
 
+
+def validate_captcha(request):
+    captcha = request.GET.get('captcha', '').encode('utf-8')
+    if captcha == '' or captcha.lower() != request.session.get('captcha', "").lower():
+        request.session['captcha'] = ''
+        return False
+    return True
 # Create your views here.
