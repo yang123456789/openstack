@@ -21,8 +21,6 @@ $(document).ready(function() {
     dotColor: '#5cbdaa',
     lineColor: '#5cbdaa'
   });
-  //验证码
-  createCode();
   //测试提交，对接程序删除即可
   $(".submit_btn").click(function(){
 	  location.href="javascrpt:;"/*tpa=http://***index.html*/;
@@ -35,20 +33,19 @@ $(document).ready(function() {
     {% csrf_token %}
     <dl class="admin_login">
      <dt>
-      <strong id="info"></strong>
+      <strong id="error_message"></strong>
      </dt>
      <dd class="user_icon">
-      <input type="text" name="username" placeholder="{% trans 'username' %}" class="login_txtbx"/>
+      <input type="text" id="username" name="username" placeholder="{% trans 'username' %}" class="login_txtbx"/>
      </dd>
      <dd class="pwd_icon">
-      <input type="password" name="password" placeholder="{% trans 'password' %}" class="login_txtbx"/>
+      <input type="password" id="password" name="password" placeholder="{% trans 'password' %}" class="login_txtbx"/>
      </dd>
      <dd class="val_icon">
       <div class="checkcode">
-        <input type="text" id="J_codetext" name="code" placeholder="{% trans 'identity code' %}" maxlength="4" class="login_txtbx">
-        <canvas class="J_codeimg" id="myCanvas" onclick="createCode()">{% trans 'Sorry, your browser does not support canvas, please download the latest version of the browser!' %}</canvas>
+        <input type="text" id="J_codetext" name="captcha" placeholder="{% trans 'identity code' %}" maxlength="4" class="login_txtbx">
+        <canvas class="J_codeimg" id="myCanvas">{% trans 'Sorry, your browser does not support canvas, please download the latest version of the browser!' %}</canvas>
       </div>
-      <input type="button" value="{% trans 'Click Update' %}" class="ver_btn" onClick="validate();">
      </dd>
      <dd>
       <input type="button" onclick="openstack_login()" value="{% trans 'login' %}" class="submit_btn"/>
