@@ -7,4 +7,5 @@ urlpatterns = patterns('portal.controllers',
     url(r'^register$', 'register.register'),
     url(r'^common$', 'common.index'),
     url(r'^system_info$', 'compute.computer.index'),
+    url(r'^yang$', 'yang.logs'),
 )
